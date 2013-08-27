@@ -6,6 +6,9 @@ window.Journal = {
   initialize: function() {
     alert('Hello from Backbone!');
   }
+
+  
+
 };
 
 $(document).ready(function(){
