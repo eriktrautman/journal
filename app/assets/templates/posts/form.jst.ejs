@@ -18,7 +18,7 @@
   <br>
   <input 
     type="hidden" 
-    name="<%= post ? post[id] : 'not_an_id_for_this_new_post' %>" 
+    name="<%= post ? 'post[id]' : 'not_an_id_for_this_new_post' %>" 
     value="<% if(post){ %>
       <%= post.escape('id') %>
       <% } %>" >

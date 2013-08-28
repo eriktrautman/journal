@@ -26,9 +26,17 @@ Journal.Views.PostsForm = Backbone.View.extend({
 
       console.log(post);
       console.log(post.isNew())
+    var isNew = post.isNew();
     var result = post.save({}, {
       success: function(saved_post){
-        that.collection.add(saved_post);  // Add to local collection
+        console.log("ISNEW IS " + isNew);
+        if (isNew){
+          console.log("Adding to local collection!");
+          that.collection.add(saved_post);  // Add to local collection
+        }else{
+          console.log("Updating local model!");
+          that.collection.add(saved_post, {merge:true});
+        }
         Backbone.history.navigate("#/")
       },
       error: function(a,b,c){

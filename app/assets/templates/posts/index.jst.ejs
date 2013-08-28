@@ -1,22 +1,30 @@
-  <h1> This is the real Index Page </h1>
-  <ul>
+  <h1> 
+    <a href="#/">
+      This is the real Index Page
+    </a>
+  </h1>
+  <table>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th></th>
+    </tr>
     <% posts.each(function(post){ %>
-      <li>
-        <ul>
-          <li>
-            <a href="#/posts/<%= post.escape('id') %>" class="post" data-id="<%= post.escape('id') %>">
-              <%= post.escape("title") %>
-            </a>
-          </li>
-          <li><%= post.escape("body") %></li>
-          <li>
-            <button class="delete" data-id="<%= post.escape("id") %>">
-              Delete
-            </button>
-          </li>
-        </ul>
-      </li>
+      <tr>
+        <td>
+          <a href="#/posts/<%= post.escape('id') %>" class="post" data-id="<%= post.escape('id') %>">
+            <%= post.escape("title") %>
+          </a>
+        </td>
+        <td><%= post.escape("body") %></td>
+        <td>
+          <button class="delete" data-id="<%= post.escape("id") %>">
+            Delete
+          </button>
+        </td>
+      </tr>
 
     <% }) %>
-  </ul>
+  </table>
+  <br>
   <a href="#/posts/new">New Post</a>

@@ -18,6 +18,6 @@ window.Journal = {
 // Put all the initialization stuff down here
 $(document).ready(function(){
   var posts = JSON.parse($("#bootstrapped-index").html());
-  Journal.initialize($("body"), posts);
+  Journal.initialize($("#container"), posts);
 
 });

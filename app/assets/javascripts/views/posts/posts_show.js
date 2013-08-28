@@ -19,7 +19,6 @@ Journal.Views.PostsShow = Backbone.View.extend({
     var id = $(e.target).data("id");
     e.preventDefault();
     console.log("TRYING TO DELETE POST ID = " + id);
-    console.log(that.model);
     var post = that.model;
     post.destroy({success: function(){
         console.log("DELETED!");

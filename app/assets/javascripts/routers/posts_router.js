@@ -19,7 +19,8 @@ Journal.Routers.Posts = Backbone.Router.extend({
       collection: that.posts
     });
 
-    that.$rootEl.html(postsIndexView.render().$el);
+    $("#sidebar").html(postsIndexView.render().$el);
+    $("#content").html("");
   },
   show: function(id){
     console.log("CALLING SHOW ON ID " + id);
@@ -29,17 +30,18 @@ Journal.Routers.Posts = Backbone.Router.extend({
       collection: posts,
       model: post
     });
-    that.$rootEl.html(postsShowView.render().$el);
+    $("#content").html(postsShowView.render().$el);
   },
   edit: function(id){
     console.log("CALLING EDIT");
     var that = this;
     var post = that.posts.get(id);
+    console.log(post);
     var postsEditView = new Journal.Views.PostsForm({
       collection: posts,
       model: post
     });
-    that.$rootEl.html(postsEditView.render().$el);
+    $("#content").html(postsEditView.render().$el);
   },
   new: function(){
     console.log("CALLING NEW");
@@ -48,7 +50,7 @@ Journal.Routers.Posts = Backbone.Router.extend({
       collection: posts,
       model: null
     })
-    that.$rootEl.html(postsNewView.render().$el);
+    $("#content").html(postsNewView.render().$el);
   }
 
 });
