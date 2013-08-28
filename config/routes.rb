@@ -1,6 +1,6 @@
 Journal::Application.routes.draw do
 
-  root :to => "posts#home"
+  root :to => "posts#index"
 
   resources :posts
 end

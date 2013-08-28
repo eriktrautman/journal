@@ -16,7 +16,11 @@ class PostsController < ApplicationController
   end
 
   def index
-    render :json => Post.all
+    @posts = Post.all
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render :json => @posts }
+    end
   end
 
   private 

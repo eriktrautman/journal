@@ -3,7 +3,7 @@
     <% posts.each(function(post){ %>
       <li>
         <ul>
-          <li><%= post.get("title") %></li>
+          <li><a href="#" class="post"><%= post.get("title") %></a></li>
           <li><%= post.get("body") %></li>
           <li>
             <button class="delete" data-id="<%= post.get("id") %>">
@@ -15,3 +15,4 @@
 
     <% }) %>
   </ul>
+  <a href="#" class="render">RERENDER</a>

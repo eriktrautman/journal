@@ -3,35 +3,22 @@ window.Journal = {
   Collections: {},
   Views: {},
   Routers: {},
-  initialize: function($rootEl) {
-    // alert('Hello from Backbone!');
+  initialize: function($rootEl, bootstrapped_posts) {
 
-    var posts = new Journal.Collections.Posts();
-    var fetched_posts;
-    posts.fetch({
-      success: function(posts){
-        view = new Journal.Views.PostsIndex({ 
-          collection: posts  
-        });
-        $("body").html(view.render().$el);
-      }
-    });
+    // Necessary to convert the flat array we bootstrapped
+    // into a native collection object
+    posts = new Journal.Collections.Posts(bootstrapped_posts);
 
-
-
-    // These SHOULD be further namespaced under another top level var
-    // like Storage or something
-    this.hi = "Howdy!";
-    // this.posts = new Journal.Collections.Posts();
-
+    // var posts = new Journal.Collections.Posts();
+    new Journal.Routers.Posts($rootEl, posts);
+    Backbone.history.start();
   }
-
-
 };
 
 
 // Put all the initialization stuff down here
 $(document).ready(function(){
+  var posts = JSON.parse($("#bootstrapped-index").html());
+  Journal.initialize($("body"), posts);
 
-  Journal.initialize($("body"));
 });
