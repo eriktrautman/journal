@@ -23,8 +23,28 @@ class PostsController < ApplicationController
     end
   end
 
+  def update
+    @post = Post.find_by_id(params[:id])
+    if @post
+      if @post.update_attributes(whitelisted_params)
+        puts "\n\n UPDATED !! \n\n"
+        render :json => @post
+      else
+        render :json => @post.errors, :status => 422
+      end
+    end
+  end
+
+  def destroy
+    @post = Post.find_by_id(params[:id])
+    if @post
+      @post.delete
+      render :json => @post
+    end
+  end
+
   private 
     def whitelisted_params
-      params.require(:post).permit(:title, :body)
+      params.require(:post).permit(:title, :body, :id)
     end
 end

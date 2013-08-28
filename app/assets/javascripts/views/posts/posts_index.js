@@ -3,7 +3,8 @@ Journal.Views.PostsIndex = Backbone.View.extend({
   template: JST['posts/index'],
   events: {
     "click button.delete": "delete_post",
-    "click a.render": "render"
+    // "click a.render": "re_render",
+    // "click a.post": "show_post"
   },
   initialize: function(){
     var that = this;
@@ -26,9 +27,25 @@ Journal.Views.PostsIndex = Backbone.View.extend({
     that.$el.html(renderedContent);
     return that
   },
-  delete_post: function(el){
-    console.log("Deleting post number " + $(el.target).data("id") + "!");
-    this.render();
+
+  delete_post: function(e){
+    var that = this;
+    var id = $(e.target).data("id");
+    e.preventDefault();
+    console.log("TRYING TO DELETE POST ID = " + id);
+    console.log(that.model);
+    var post = that.collection.get(id);
+    post.destroy({success: function(){
+        console.log("DELETED!");
+        Backbone.history.navigate("#/", true)
+      },
+      error: function(a,b,c){
+        console.log("ERROR");
+        console.log(a);
+        console.log(b);
+        console.log(c);
+      }
+    });
   }
 
 

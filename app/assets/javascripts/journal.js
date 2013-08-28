@@ -9,7 +9,6 @@ window.Journal = {
     // into a native collection object
     posts = new Journal.Collections.Posts(bootstrapped_posts);
 
-    // var posts = new Journal.Collections.Posts();
     new Journal.Routers.Posts($rootEl, posts);
     Backbone.history.start();
   }

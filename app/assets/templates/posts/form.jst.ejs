@@ -1,5 +1,5 @@
 <h1>New or Edit Post!</h1>
-<div class="form">
+<form class="form">
   <label for="post_title">
     Title
     <input 
@@ -16,7 +16,12 @@
       value="<%= post ? post.escape('body') : '' %>" >
   </label>
   <br>
-  <input type="hidden" name="post[id]" value="<%= post ? post.escape('id') : '' %>" >
+  <input 
+    type="hidden" 
+    name="<%= post ? post[id] : 'not_an_id_for_this_new_post' %>" 
+    value="<% if(post){ %>
+      <%= post.escape('id') %>
+      <% } %>" >
   <button class="submit"><%= post ? "Update" : "Create" %></button>
-</div>
+</form>
 <a href="#/">Back</a>

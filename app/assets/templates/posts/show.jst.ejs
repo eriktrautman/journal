@@ -1,0 +1,6 @@
+<h1>Showing Post <%= post.escape("title") %></h1>
+<p><%= post.escape("body") %></p>
+<a href="#/posts/<%= post.escape("id") %>/edit">Edit</a>
+<br>
+<a href="#/" class="delete" data-id="<%= post.escape('id') %>"> Delete</a>
+<a href="#/">Back!</a>

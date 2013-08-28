@@ -3,10 +3,14 @@
     <% posts.each(function(post){ %>
       <li>
         <ul>
-          <li><a href="#" class="post"><%= post.get("title") %></a></li>
-          <li><%= post.get("body") %></li>
           <li>
-            <button class="delete" data-id="<%= post.get("id") %>">
+            <a href="#/posts/<%= post.escape('id') %>" class="post" data-id="<%= post.escape('id') %>">
+              <%= post.escape("title") %>
+            </a>
+          </li>
+          <li><%= post.escape("body") %></li>
+          <li>
+            <button class="delete" data-id="<%= post.escape("id") %>">
               Delete
             </button>
           </li>
@@ -15,4 +19,4 @@
 
     <% }) %>
   </ul>
-  <a href="#" class="render">RERENDER</a>
+  <a href="#/posts/new">New Post</a>
